@@ -1,0 +1,54 @@
+# data/config.yml
+
+# Application Settings
+app:
+  name: "Multi-Domain AI Agent"
+  version: "1.0.0"
+  description: "An AI agent capable of interacting with various domains using specialized tools."
+
+# LLM Settings
+llm:
+  provider: "gemini" # Default LLM provider: "gemini", "openai", "ollama"
+  model: "gemini-1.5-flash" # Default LLM model: "gemini-1.5-flash", "gpt-4o", "llama3"
+  temperature: 0.7 # Default LLM temperature
+  max_summary_input_tokens: 128000 # Max tokens for summarization input (for iterative summarization)
+
+# RAG Settings (for uploaded documents)
+rag:
+  embedding_model: "text-embedding-ada-002" # or "text-embedding-3-small", "nomic-embed-text"
+  chunk_size: 500 # Default chunk size for document splitting
+  chunk_overlap: 50 # Default chunk overlap for document splitting
+  max_query_results_k: 5 # Default max documents to retrieve for RAG queries
+
+# Web Scraping Settings
+web_scraping:
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  timeout_seconds: 30
+  max_search_results: 5 # Max results to fetch from web search
+
+# Default User Tier and Roles (used for new users if not specified)
+default_user_tier: "free"
+default_user_roles: ["user"]
+
+# Default API Providers for each domain (used if no specific provider is requested)
+api_defaults:
+  finance: "alphavantage"
+  crypto: "coingecko"
+  medical: "health_api" # Hypothetical medical API
+  news: "newsapi"
+  legal: "legal_data_api" # Hypothetical legal API
+  education: "academic_api" # Hypothetical education API
+  entertainment: "themoviedb" # Example: TMDb for movies
+  weather: "openweathermap" # Hypothetical weather API
+  travel: "amadeus" # Hypothetical travel API (can be Amadeus for flights)
+  sports: "thesportsdb" # Hypothetical sports API
+  historical_finance: "alphavantage" # Default for historical finance
+  historical_crypto: "coingecko" # Default for historical crypto
+  historical_weather: "mock_historical_weather_provider" # Default for historical weather
+  historical_travel: "mock_historical_travel_api" # Default for historical travel
+
+# Analytics Settings
+analytics:
+  enabled: True # Set to True to enable logging of analytics events to Firestore
+  log_tool_usage: True # Log every tool call
+  log_query_failures: True # Log when the agent fails to answer a query
